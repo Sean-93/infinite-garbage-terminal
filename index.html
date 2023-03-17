@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>⬖ ig TERMINAL ⬗</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css" />
+  <style>
+    html {
+      scroll-behavior: smooth !important;
+      font-family: monospace !important;
+    }
+
+    .terminal-box {
+      min-width: 50%;
+      max-width: 85%;
+      height: 50vh;
+      margin: 2.5rem auto;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      overflow-y: scroll !important;
+      font-family: monospace;
+    }
+
+    .terminal-content {
+      padding: 2.5rem 2.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>ig TERMINAL ⬗</h1>
+  <sub>Welcome to ig TERMINAL!<sub>
+      <p>⬖ Empowering your workflow with seamless integration & advanced functionality.</p>
+      <ul>
+        <h2>CONTROLS:</h2>
+        <li>
+          (ctrl + c or double-click) - stop terminal + add user text input
+        </li>
+        <li>
+          (enter or click the "submit" button under input) - submit user text input
+
+        </li>
+      </ul>
+      <div class="terminal-box">
+        <div class="terminal-content">
+          <span>
+            <div id="container">
+              <h2>⬖ ig TERMINAL ⬗</h2>
+              <p>
+                Welcome to ig TERMINAL, the ultimate tool for developers who want to streamline their workflow and get
+                things done faster. Whether you're a seasoned user, an enthusiast, or an expert, ig TERMINAL offers all
+                the features you need efficiently & effectively. Its sleek and intuitive interface makes it easy to stay
+                organized and stay on top, no matter what you're
+                working on. ig TERMINAL offers a powerful interface- ig TERMINAL makes it easy to stay
+                productive and focused, without ever leaving the terminal.
+              </p>
+            </div>
+          </span>
+        </div>
+      </div>
+
+      <script>
+        console.log(
+          "This is the Infinite Garbage Terminal- Web Version.  Do you have to work in the office & want to look busy?  Just slap this bad boy up on one of your monitors & your boss will never know the difference!"
+        );
+
+        // INFINITE SCROLLING TO THE BOTTOM BUT IF YOU SCROLL UP, THE INFINITE SCROLLING STOPS
+        const container = document.getElementById("container");
+        const phrases = [
+          "ls -la",
+          "grep 'search-term' file.txt",
+          "rm -rf directory/",
+          "chmod 644 file.txt",
+          "sed 's/cat/dog/g' file.txt",
+          "find . -name '*.js'",
+          "awk '{ print $1 }' file.txt",
+          "(defun add-two-numbers (a b) (+ a b))",
+          "(let ((x 5) (y 7)) (* x y))",
+          "(mapcar 'string-downcase '(\"HELLO\" \"WORLD\"))",
+          "(with-open-file (stream \"output.txt\" :direction :output) (format stream \"The quick brown fox jumps over the lazy dog.\"))",
+          "const http = require('http');",
+          "fs.readFile('file.txt', 'utf8', (err, data) => { if (err) throw err; console.log(data); });",
+          "process.argv.forEach((val, index) => { console.log(`${index}: ${val}`); });",
+          "const numbers = [1, 2, 3, 4, 5]; numbers.forEach((number) => { console.log(number); });",
+          "module.exports = { answer: 42 };",
+          "ps -ef",
+          "tar -xvf archive.tar.gz",
+          "mv file.txt directory/",
+          "cp -r source/ destination/",
+          "ssh user@host",
+          "curl http://example.com",
+          "apt-get install package",
+          "yum update",
+          "make clean",
+          "grep -r 'search-term' .",
+          "awk '{sum += $1} END {print sum}' file.txt",
+          "(defun fibonacci (n) (if (< n 2) n (+ (fibonacci (- n 1)) (fibonacci (- n 2)))))",
+          "(let ((x 3) (y 5)) (- y x))",
+          "(mapcar 'string-capitalize '(\"the\" \"quick\" \"brown\" \"fox\"))",
+          "(with-open-file (stream \"output.txt\" :direction :output) (format stream \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\"))",
+          "const fs = require('fs');",
+          "http.createServer((req, res) => { res.end('Hello, World!'); });",
+          "process.stdin.on('data', (data) => { console.log(`User input: ${data}`); });",
+          "const fruits = ['apple', 'banana', 'cherry']; fruits.forEach((fruit) => { console.log(fruit); });",
+          "module.exports = { PI: 3.14159 };",
+          "chmod +x script.sh",
+          "chown user:group file.txt",
+          "kill -9 1234",
+          "curl -X POST -d 'name=John&age=30' http://example.com",
+          "yum install package",
+          "make",
+          "echo 'Hello, world!'",
+          "sed 's/123/456/g' file.txt",
+          "awk '{ sum += $1 } END { print sum/NR }' file.txt",
+          "(defun reverse-string (str) (apply #'string (reverse (coerce str 'list))))",
+          "(let ((x 2) (y 4)) (/ y x))",
+          "ls -la",
+          "grep 'search-term' file.txt",
+          "rm -rf directory/",
+          "chmod 644 file.txt",
+          "sed 's/cat/dog/g' file.txt",
+          "find . -name '*.js'",
+          "awk '{ print $1 }' file.txt",
+          "(defun add-two-numbers (a b) (+ a b))",
+          "(let ((x 5) (y 7)) (* x y))",
+          "(mapcar 'string-downcase '(\"HELLO\" \"WORLD\"))",
+          "(with-open-file (stream \"output.txt\" :direction :output) (format stream \"The quick brown fox jumps over the lazy dog.\"))",
+          "const http = require('http');",
+          "fs.readFile('file.txt', 'utf8', (err, data) => { if (err) throw err; console.log(data); });",
+          "process.argv.forEach((val, index) => { console.log(`${index}: ${val}`); });",
+          "const numbers = [1, 2, 3, 4, 5]; numbers.forEach((number) => { console.log(number); });",
+          "module.exports = { answer: 42 };",
+          "ps -ef",
+          "tar -xvf archive.tar.gz",
+          "mv file.txt directory/",
+          "cp -r source/ destination/",
+          "ssh user@host",
+          "curl http://example.com",
+          "apt-get install package",
+          "yum update",
+          "make clean",
+          "grep -r 'search-term' .",
+          "awk '{sum += $1} END {print sum}' file.txt",
+          "(defun fibonacci (n) (if (< n 2) n (+ (fibonacci (- n 1)) (fibonacci (- n 2)))))",
+          "(let ((x 3) (y 5)) (- y x))",
+          "(mapcar 'string-capitalize '(\"the\" \"quick\" \"brown\" \"fox\"))",
+          "(with-open-file (stream \"output.txt\" :direction :output) (format stream \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\"))",
+          "const fs = require('fs');",
+          "http.createServer((req, res) => { res.end('Hello, World!'); });",
+          "process.stdin.on('data', (data) => { console.log(`User input: ${data}`); });",
+          "const fruits = ['apple', 'banana', 'cherry']; fruits.forEach((fruit) => { console.log(fruit); });",
+          "module.exports = { PI: 3.14159 };",
+          "chmod +x script.sh",
+          "chown user:group file.txt",
+          "kill -9 1234",
+          "curl -X POST -d 'name=John&age=30' http://example.com",
+          "yum install package",
+          "make",
+          "echo 'Hello, world!'",
+          "sed 's/123/456/g' file.txt",
+          "awk '{ sum += $1 } END { print sum/NR }' file.txt",
+          "(defun reverse-string (str) (apply #'string (reverse (coerce str 'list))))",
+          "(let ((x 2) (y 4)) (/ y x))",
+        ];
+
+        const usedPhrases = [];
+
+        function getRandomPhrase() {
+          let randomPhraseIndex = Math.floor(Math.random() * phrases.length);
+          let randomPhrase = phrases[randomPhraseIndex];
+          if (usedPhrases.length >= 5) {
+            usedPhrases.shift();
+          }
+          usedPhrases.push(randomPhrase);
+          return randomPhrase;
+        }
+
+        function printPhrase() {
+          let randomPhrase = getRandomPhrase();
+          let randomTag = [
+            "p",
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "div",
+            "span",
+            "strong",
+            "em",
+            "mark",
+            "small",
+            "del",
+            "ins",
+            "sub",
+            "sup",
+            "code",
+            "kbd",
+            "samp",
+            "var",
+          ][Math.floor(Math.random() * 20)];
+          let phraseElement = document.createElement(randomTag);
+          phraseElement.innerText = randomPhrase;
+          phraseElement.classList.add("random-phrase");
+          container.appendChild(phraseElement);
+        }
+
+        let inputContainer = document.createElement("div");
+        let inputField = document.createElement("input");
+        let submitButton = document.createElement("button");
+
+        inputField.type = "text";
+        inputField.id = "inputField";
+        submitButton.textContent = "Submit";
+        inputContainer.appendChild(inputField);
+        inputContainer.appendChild(submitButton);
+
+        let intervalId = setInterval(() => {
+          printPhrase();
+        }, 500);
+
+        function resumePrinting() {
+          intervalId = setInterval(() => {
+            printPhrase();
+          }, 150);
+          container.removeChild(inputContainer);
+          inputField.value = "";
+        }
+
+        function pausePrinting() {
+          clearInterval(intervalId);
+          container.appendChild(inputContainer);
+        }
+
+        inputField.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" && inputField.value !== "") {
+            resumePrinting();
+          }
+        });
+
+        submitButton.addEventListener("click" || "enter", () => {
+          if (inputField.value !== "") {
+            resumePrinting();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.ctrlKey && event.key === "c") {
+            pausePrinting();
+            inputField.focus();
+          }
+        });
+
+        document.addEventListener("dblclick", (event) => {
+          pausePrinting();
+          inputField.focus();
+        });
+
+      </script>
+</body>
+
+</html>
