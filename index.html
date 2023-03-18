@@ -18,7 +18,7 @@
     .terminal-box {
       min-width: 50%;
       max-width: 100%;
-      height: clamp(45vh, 50vh, 55vh);
+      height: clamp(40vh, 45vh, 50vh);
       margin: 2.5rem auto;
       border: 1px solid #ccc;
       overflow: hidden;
@@ -43,29 +43,27 @@
       <ul>
         <h2>CONTROLS:</h2>
         <li>
-          (ctrl + c or double-click or tap the screen on the terminal on mobile) - stop terminal + add user text input
+          (press ctrl + c / double-click / click button under the terminal) - stop terminal + add user text input
         </li>
         <li>
-          (enter or click the "submit" button under input) - submit user text input
+          (press enter / click the "submit" button under input) - submit user text input
         </li>
       </ul>
       <div class="terminal-box">
-        <div>
-          <span>
-            <div id="container">
-              <h2>⬖ ig TERMINAL ⬗</h2>
-              <p>
-                Welcome to ig TERMINAL, the ultimate tool for developers who want to streamline their workflow and get
-                things done faster. Whether you're a seasoned user, an enthusiast, or an expert, ig TERMINAL offers all
-                the features you need efficiently & effectively. Its sleek and intuitive interface makes it easy to stay
-                organized and stay on top, no matter what you're
-                working on. ig TERMINAL offers a powerful interface- ig TERMINAL makes it easy to stay
-                productive and focused, without ever leaving the terminal.
-              </p>
-            </div>
-          </span>
+        <div id="container">
+          <h2>⬖ ig TERMINAL ⬗</h2>
+          <p>
+            Welcome to ig TERMINAL, the ultimate tool for developers who want to streamline their workflow and get
+            things done faster. Whether you're a seasoned user, an enthusiast, or an expert, ig TERMINAL offers all
+            the features you need efficiently & effectively. Its sleek and intuitive interface makes it easy to stay
+            organized and stay on top, no matter what you're
+            working on. ig TERMINAL offers a powerful interface- ig TERMINAL makes it easy to stay
+            productive and focused, without ever leaving the terminal.
+          </p>
         </div>
       </div>
+      <button onclick="pausePrinting();inputField.focus();">Pause for Input ⬗ ⬗ ⬗</button>
+
 
       <script>
         console.log(
@@ -241,7 +239,7 @@
         function resumePrinting() {
           intervalId = setInterval(() => {
             printPhrase();
-          }, 150);
+          }, 500);
           container.removeChild(inputContainer);
           inputField.value = "";
         }
@@ -274,17 +272,6 @@
           pausePrinting();
           inputField.focus();
         });
-
-        let lastTouchEnd = 0;
-        container.addEventListener('touchstart', function (event) {
-          const now = (new Date()).getTime();
-          if (now - lastTouchEnd <= 300) {
-            event.preventDefault();
-            pausePrinting();
-            inputField.focus();
-          }
-          lastTouchEnd = now;
-        }, false);
 
       </script>
 </body>
