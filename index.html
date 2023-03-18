@@ -10,22 +10,28 @@
     html {
       scroll-behavior: smooth !important;
       font-family: monospace !important;
-      font-size: clamp(1rem, 1.25rem, 1.5rem)!important;
+      font-size: clamp(1rem, 1.25rem, 1.5rem) !important;
+      max-width: 100vw;
+      max-height: 100%;
     }
 
     .terminal-box {
       min-width: 50%;
       max-width: 100%;
-      height: clamp(25vh, 55vh, 75vh);
+      height: clamp(45vh, 50vh, 55vh);
       margin: 2.5rem auto;
       border: 1px solid #ccc;
       overflow: hidden;
-      overflow-y: scroll !important;
       font-family: monospace;
     }
 
-    .terminal-content {
-      padding: 2.5rem 2.5rem;
+    #container {
+      padding: 1rem;
+      height: clamp(45vh, 50vh, 55vh);
+      overflow-y: scroll;
+      /* enable vertical scrolling */
+      scroll-behavior: smooth;
+      /* enable smooth scrolling behavior */
     }
   </style>
 </head>
@@ -37,14 +43,14 @@
       <ul>
         <h2>CONTROLS:</h2>
         <li>
-          (ctrl + c or double-click or double-tap screen on mobile) - stop terminal + add user text input
+          (ctrl + c or double-click or tap the screen on the terminal on mobile) - stop terminal + add user text input
         </li>
         <li>
           (enter or click the "submit" button under input) - submit user text input
         </li>
       </ul>
       <div class="terminal-box">
-        <div class="terminal-content">
+        <div>
           <span>
             <div id="container">
               <h2>⬖ ig TERMINAL ⬗</h2>
@@ -177,6 +183,13 @@
           return randomPhrase;
         }
 
+        function scrollToBottom() {
+          container.scrollTo({
+            top: container.scrollHeight,
+            behavior: "smooth"
+          });
+        }
+
         function printPhrase() {
           let randomPhrase = getRandomPhrase();
           let randomTag = [
@@ -206,7 +219,10 @@
           phraseElement.innerText = randomPhrase;
           phraseElement.classList.add("random-phrase");
           container.appendChild(phraseElement);
+          container.scrollTop = container.scrollHeight;
+          scrollToBottom();
         }
+
 
         let inputContainer = document.createElement("div");
         let inputField = document.createElement("input");
@@ -260,7 +276,7 @@
         });
 
         let lastTouchEnd = 0;
-        document.addEventListener('touchend', function (event) {
+        container.addEventListener('touchstart', function (event) {
           const now = (new Date()).getTime();
           if (now - lastTouchEnd <= 300) {
             event.preventDefault();
