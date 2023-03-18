@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <meta charset="UTF-8" />
   <title>⬖ ig TERMINAL ⬗</title>
 
@@ -10,7 +11,7 @@
     html {
       scroll-behavior: smooth !important;
       font-family: monospace !important;
-      font-size: clamp(1rem, 1.25rem, 1.5rem) !important;
+      font-size: clamp(1rem, 1.15rem, 1.25rem) !important;
       max-width: 100vw;
       max-height: 100%;
     }
@@ -35,13 +36,17 @@
     }
 
     button {
-      font-size: 1rem!important;
+      font-size: 1rem !important;
     }
 
-    @media screen and (max-width: 600px) {
-      button {
-      font-size: 3rem!important;
-    }
+    @media only screen and (max-width: 600px) {
+      html {
+        font-size: clamp(.85rem, 1rem, 1.15rem) !important;
+      }
+
+      .terminal-box {
+        height: clamp(30vh, 35vh, 40vh);
+      }
     }
   </style>
 </head>
@@ -53,7 +58,8 @@
       <ul>
         <h2>CONTROLS:</h2>
         <li>
-          (press ctrl + c / double-click / click button under the terminal) - stop terminal + add user text input
+          (press ctrl + c / double-click on the terminal / click button under the terminal) - stop terminal + add user
+          text input
         </li>
         <li>
           (press enter / click the "submit" button under input) - submit user text input
@@ -72,16 +78,18 @@
           </p>
         </div>
       </div>
-      <button onclick="pausePrinting();inputField.focus();">Pause for Input ⬗ ⬗ ⬗</button>
+      <button onclick="submitButtonClick()">Pause for Input ⬗ ⬗ ⬗</button>
 
 
       <script>
         console.log(
-          "This is the Infinite Garbage Terminal- Web Version.  Do you have to work in the office & want to look busy?  Just slap this bad boy up on one of your monitors & your boss will never know the difference!"
+          "⬖⬖⬖ This is the Infinite Garbage Terminal- Web Version.  Do you have to work in the office & want to look busy?  Just slap this bad boy up on one of your monitors & your boss will never know the difference!"
         );
 
-        // INFINITE SCROLLING TO THE BOTTOM BUT IF YOU SCROLL UP, THE INFINITE SCROLLING STOPS
+
         const container = document.getElementById("container");
+
+        // LIST OF 100 UNIX/CLISP/NODEJS STYLE TERMINAL PHRASES TO BE OUTPUT RANDOMLY
         const phrases = [
           "ls -la",
           "grep 'search-term' file.txt",
@@ -181,6 +189,8 @@
 
         const usedPhrases = [];
 
+
+        // THIS FUNCTION WILL SELECT A PHRASE FROM THE ARRAY MAKE SURE THE SAME PHRASE IS NOT SELECTED WITHIN 5 ITERATIONS
         function getRandomPhrase() {
           let randomPhraseIndex = Math.floor(Math.random() * phrases.length);
           let randomPhrase = phrases[randomPhraseIndex];
@@ -191,6 +201,7 @@
           return randomPhrase;
         }
 
+        // ALWAYS SCROLLING TO THE BOTTOM OF THE "TERMINAL" 
         function scrollToBottom() {
           container.scrollTo({
             top: container.scrollHeight,
@@ -198,6 +209,7 @@
           });
         }
 
+        // PRINTS RANDOM PHRASE WRAPPED IN A RANDOM HTML TEXT TAG FROM THE ARRAY BELOW
         function printPhrase() {
           let randomPhrase = getRandomPhrase();
           let randomTag = [
@@ -231,7 +243,7 @@
           scrollToBottom();
         }
 
-
+        // SETTING UP USER INPUT & SUBMIT BUTTON TO BE GENERATED WHEN THE "Pause for Input" BUTTON IS PRESSED
         let inputContainer = document.createElement("div");
         let inputField = document.createElement("input");
         let submitButton = document.createElement("button");
@@ -246,6 +258,7 @@
           printPhrase();
         }, 500);
 
+        // REMOVES USER INPUT & SUBMIT BUTTON AFTER SUBMITTING AND RESUMES PRINTING
         function resumePrinting() {
           intervalId = setInterval(() => {
             printPhrase();
@@ -254,34 +267,56 @@
           inputField.value = "";
         }
 
+        // PAUSES PRINTING
         function pausePrinting() {
           clearInterval(intervalId);
           container.appendChild(inputContainer);
         }
 
+        // PRESSING ENTER WILL "SUBMIT" THE USER INPUT
         inputField.addEventListener("keydown", (event) => {
           if (event.key === "Enter" && inputField.value !== "") {
             resumePrinting();
           }
         });
 
+        // CLICKING THE SUBMIT BUTTON WILL ALSO "SUBMIT" USER INPUT
         submitButton.addEventListener("click" || "enter", () => {
           if (inputField.value !== "") {
             resumePrinting();
           }
         });
 
+
+        // ESSENTIALLY THE SAME AS scrollToBottom();, BUT HAD TO ADD A TIMEOUT SO IT ACTUALLY CAN SCROLL TO THE BUTTON IN TIME
+        function scrollToBottomWithTimeout() {
+          setTimeout(function () {
+            scrollToBottom();
+          }, 250);
+        }
+
+        // PRESSING crtl + c WILL PAUSE THE PROGRAM AND GENERATE USER INPUT & SUBMIT BUTTON AND SCROLL TO THE BOTTOM OF THE TERMINAL
         document.addEventListener("keydown", (event) => {
           if (event.ctrlKey && event.key === "c") {
             pausePrinting();
             inputField.focus();
+            scrollToBottomWithTimeout()
           }
         });
 
-        document.addEventListener("dblclick", (event) => {
+        // DOUBLE-CLICKING ON THE TERMINAL WILL PAUSE THE PROGRAM AND GENERATE USER INPUT & SUBMIT BUTTON AND SCROLL TO THE BOTTOM OF THE TERMINAL
+        container.addEventListener("dblclick", (event) => {
           pausePrinting();
           inputField.focus();
+          scrollToBottomWithTimeout()
         });
+
+        // CLICKING ON THE "Pause for Input" BUTTON WILL PAUSE THE PROGRAM AND GENERATE USER INPUT & SUBMIT BUTTON AND SCROLL TO THE BOTTOM OF THE TERMINAL
+        function submitButtonClick() {
+          pausePrinting();
+          inputField.focus();
+          scrollToBottomWithTimeout();
+        }
 
       </script>
 </body>
