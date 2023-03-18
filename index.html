@@ -10,12 +10,13 @@
     html {
       scroll-behavior: smooth !important;
       font-family: monospace !important;
+      font-size: clamp(1rem, 1.25rem, 1.5rem)!important;
     }
 
     .terminal-box {
       min-width: 50%;
-      max-width: 85%;
-      height: 50vh;
+      max-width: 100%;
+      height: clamp(25vh, 55vh, 75vh);
       margin: 2.5rem auto;
       border: 1px solid #ccc;
       overflow: hidden;
@@ -36,11 +37,10 @@
       <ul>
         <h2>CONTROLS:</h2>
         <li>
-          (ctrl + c or double-click) - stop terminal + add user text input
+          (ctrl + c or double-click or double-tap screen on mobile) - stop terminal + add user text input
         </li>
         <li>
           (enter or click the "submit" button under input) - submit user text input
-
         </li>
       </ul>
       <div class="terminal-box">
@@ -258,6 +258,17 @@
           pausePrinting();
           inputField.focus();
         });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+          const now = (new Date()).getTime();
+          if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+            pausePrinting();
+            inputField.focus();
+          }
+          lastTouchEnd = now;
+        }, false);
 
       </script>
 </body>
